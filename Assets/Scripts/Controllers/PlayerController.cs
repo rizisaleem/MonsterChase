@@ -1,14 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
-public class Player : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
-    private float movement, jump;
-    [SerializeField]
-    private float minX, maxX;
+    [SerializeField] private float movement, jump;
+    [SerializeField] private float minX, maxX;
 
     private float x_axis;
     private float y_axis;
@@ -24,7 +21,7 @@ public class Player : MonoBehaviour
     private string Ground_Tag = "Ground";
     private string Enemy_Tag = "Enemy";
 
-    private void Awake()
+    private void Start()
     {
         body = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -43,13 +40,9 @@ public class Player : MonoBehaviour
         pos = transform.position;
 
         if (pos.x < minX)
-        {
             pos.x = minX;
-        }
         else if (pos.x > maxX)
-        {
             pos.x = maxX;
-        }
 
         transform.position = pos;
     }
@@ -62,20 +55,16 @@ public class Player : MonoBehaviour
 
     void Animation()
     {
-        if (x_axis > 0)
+        if(x_axis != 0)
         {
             anim.SetBool(Walk_Animation, true);
-            sr.flipX = false; 
-        }
-        else if (x_axis < 0)
-        {
-            anim.SetBool(Walk_Animation, true);
-            sr.flipX = true;
+            if(x_axis > 0)
+                sr.flipX = false; 
+            else
+                sr.flipX = true;
         }
         else
-        {
             anim.SetBool(Walk_Animation, false);
-        }
     }
 
     void Jump()
@@ -90,22 +79,15 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag(Ground_Tag))
-        {
             isGrounded = true;
-        }
 
         if (collision.gameObject.CompareTag(Enemy_Tag))
-        {
             Destroy(gameObject);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag(Enemy_Tag))
-        {
             Destroy(gameObject);
-        }
     }
-
 }

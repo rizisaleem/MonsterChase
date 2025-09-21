@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2179023985969966774}
   - component: {fileID: 9086541745005154040}
   - component: {fileID: 5859220703655941145}
-  - component: {fileID: 2457501440128273189}
+  - component: {fileID: 3210160853294511489}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -171,7 +171,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1.02, y: 2.22}
   m_Direction: 0
---- !u!114 &2457501440128273189
+--- !u!114 &3210160853294511489
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,10 +180,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3558379681096072296}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57143b8a2f3d83e4fabb56d2f99d34cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e185c578aec82b41907f3383bcf57ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: 8
+  movement: 7
   jump: 12
-  minX: -31.5
-  maxX: 31.25
+  minX: -28.5
+  maxX: 28.5

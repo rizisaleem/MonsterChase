@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Game_Manager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject[] characters;
+    [SerializeField] private GameObject[] characters;
 
-    public static Game_Manager instance;
+    public static GameManager Instance;
 
     private int charIndex;
 
@@ -20,15 +19,14 @@ public class Game_Manager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
+            return;
         }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void OnEnable()
@@ -44,9 +42,6 @@ public class Game_Manager : MonoBehaviour
     private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "Gameplay")
-        {
             Instantiate(characters[charIndex]);
-        }
     }
-
 }
