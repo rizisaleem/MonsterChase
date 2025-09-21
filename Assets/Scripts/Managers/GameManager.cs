@@ -42,6 +42,6 @@ public class GameManager : MonoBehaviour
     private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "Gameplay")
-            Instantiate(characters[charIndex]);
+            characters[charIndex].SetActive(true);
     }
 }

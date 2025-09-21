@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5870767289408176165}
   - component: {fileID: 8163296126385606511}
   - component: {fileID: 2745001758862303488}
+  - component: {fileID: 1056444634600213601}
   m_Layer: 6
   m_Name: Red_Zombie
   m_TagString: Enemy
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 5881256430452742596}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.11, y: -1.14, z: 0.025283813}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -184,3 +185,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
+--- !u!114 &1056444634600213601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5881256430452742596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29d64c4377848054da9c4eac623a4e19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

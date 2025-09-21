@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     private string Ground_Tag = "Ground";
     private string Enemy_Tag = "Enemy";
 
-    private void Start()
+    void Start()
     {
         body = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -82,12 +82,6 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
 
         if (collision.gameObject.CompareTag(Enemy_Tag))
-            Destroy(gameObject);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag(Enemy_Tag))
-            Destroy(gameObject);
+            gameObject.SetActive(false);
     }
 }
