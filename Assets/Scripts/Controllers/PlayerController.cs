@@ -74,6 +74,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
+            AudioManager.Instance.PlaySound("Jump");
             isGrounded = false;
             body.AddForce(new Vector2(0, jump), ForceMode2D.Impulse);
         }
@@ -86,6 +87,7 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.CompareTag(Enemy_Tag))
         {
+            AudioManager.Instance.PlaySound("Death");
             gameObject.SetActive(false);
             OnPlayerHit?.Invoke();
         }

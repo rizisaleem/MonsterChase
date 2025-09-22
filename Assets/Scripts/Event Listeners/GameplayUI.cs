@@ -34,6 +34,7 @@ public class GameplayUI : MonoBehaviour
 
     public void Home()
     {
+        AudioManager.Instance.PlaySound("Click");
         SceneManager.LoadScene("Main Menu");
         GameManager.Instance.playerStatus(false);
         endScreenPanel.SetActive(false);
@@ -41,6 +42,7 @@ public class GameplayUI : MonoBehaviour
 
     public void Restart()
     {
+        AudioManager.Instance.PlaySound("Click");
         SceneManager.LoadScene("Gameplay");
         endScreenPanel.SetActive(false);
     }

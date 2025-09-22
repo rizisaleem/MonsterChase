@@ -16,6 +16,19 @@ public class CameraController : MonoBehaviour
     }
 
     // Update is called once per frame
+    void Update()
+    {
+#if UNITY_ANDROID || UNITY_IOS
+        bool isLandscape = Screen.width > Screen.height;
+
+        if (!isLandscape)
+            potraitMode();
+        else
+            landScape();
+#endif
+    }
+
+    // Update is called once per frame
     void LateUpdate()
     {
         if (!player)
@@ -26,11 +39,27 @@ public class CameraController : MonoBehaviour
 
         transform.position = pos;
 
+#if UNITY_STANDALONE
         if (pos.x < minX)
             pos.x = minX;
         else if (pos.x > maxX)
             pos.x = maxX;
 
         transform.position = pos;
+#endif
+    }
+
+    void potraitMode()
+    {
+        pos.y = 5f;
+        transform.position = pos;
+        Camera.main.orthographicSize = 12f;
+    }
+
+    void landScape()    
+    {
+        pos.y = 0f;
+        transform.position = pos;
+        Camera.main.orthographicSize = 7f;
     }
 }
