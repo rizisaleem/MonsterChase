@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class PlayerController : MonoBehaviour
     private string Walk_Animation = "Walk";
     private string Ground_Tag = "Ground";
     private string Enemy_Tag = "Enemy";
+
+    public static event Action OnPlayerHit;
 
     void Start()
     {
@@ -82,6 +85,9 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
 
         if (collision.gameObject.CompareTag(Enemy_Tag))
+        {
             gameObject.SetActive(false);
+            OnPlayerHit?.Invoke();
+        }
     }
 }

@@ -42,6 +42,11 @@ public class GameManager : MonoBehaviour
     private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "Gameplay")
-            characters[charIndex].SetActive(true);
+            playerStatus(true);
+    }
+
+    public void playerStatus(bool active)
+    {
+        characters[charIndex].SetActive(active);
     }
 }
