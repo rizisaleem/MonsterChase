@@ -29,13 +29,16 @@ public class PlayerController : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+
+        MobileInputController.Instance?.SetPlayer(this);
     }
 
     void Update()
     {
         PLayer_Movement();
         Animation();
-        Jump();
+        if (Input.GetButtonDown("Jump"))  
+            Jump();
     }
 
     void LateUpdate()
@@ -52,7 +55,9 @@ public class PlayerController : MonoBehaviour
 
     void PLayer_Movement()
     {
-        x_axis = Input.GetAxisRaw("Horizontal");
+        #if UNITY_STANDALONE || UNITY_WEBPLAYER
+            x_axis = Input.GetAxisRaw("Horizontal");
+        #endif
         transform.position += new Vector3(x_axis, 0, 0) * Time.deltaTime * movement;
     }
 
@@ -70,14 +75,19 @@ public class PlayerController : MonoBehaviour
             anim.SetBool(Walk_Animation, false);
     }
 
-    void Jump()
+    public void Jump()
     {
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if(isGrounded)
         {
             AudioManager.Instance.PlaySound("Jump");
             isGrounded = false;
             body.AddForce(new Vector2(0, jump), ForceMode2D.Impulse);
         }
+    }
+
+    public void movePlayer(float direction)
+    {
+        x_axis = direction;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
