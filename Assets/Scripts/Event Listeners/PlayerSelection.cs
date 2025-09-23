@@ -11,4 +11,9 @@ public class PlayerSelectionController : MonoBehaviour
         GameManager.Instance.CharIndex = index;
         SceneManager.LoadScene("Gameplay");
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }

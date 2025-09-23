@@ -11,6 +11,7 @@ public class GameplayUI : MonoBehaviour
     [SerializeField] private Text totalTime;
     private float timer = 0;
 
+    [SerializeField] private GameObject homeBtn;
     [SerializeField] private GameObject goalPanel;
     [SerializeField] private GameObject endScreenPanel;
 
@@ -52,6 +53,7 @@ public class GameplayUI : MonoBehaviour
     public void EndScreen()
     {
         timerText.gameObject.SetActive(false);
+        homeBtn.SetActive(false);
         totalTime.text = "Time Survived:  " + timerText.text;
         endScreenPanel.SetActive(true);
     }

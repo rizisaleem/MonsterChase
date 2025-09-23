@@ -6,13 +6,13 @@ public class CameraController : MonoBehaviour
 {
     private Transform player;
     private Vector3 pos;
-
-    [SerializeField] private float minX, maxX;
+    private float minX, maxX;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
+        pos = transform.position;
     }
 
     // Update is called once per frame
@@ -39,18 +39,18 @@ public class CameraController : MonoBehaviour
 
         transform.position = pos;
 
-#if UNITY_STANDALONE
         if (pos.x < minX)
             pos.x = minX;
         else if (pos.x > maxX)
             pos.x = maxX;
 
         transform.position = pos;
-#endif
     }
 
     void potraitMode()
     {
+        minX = -28.5f;
+        maxX = 28.5f;
         pos.y = 5f;
         transform.position = pos;
         Camera.main.orthographicSize = 12f;
@@ -58,6 +58,8 @@ public class CameraController : MonoBehaviour
 
     void landScape()    
     {
+        minX = -20f;
+        maxX = 20f;
         pos.y = 0f;
         transform.position = pos;
         Camera.main.orthographicSize = 7f;

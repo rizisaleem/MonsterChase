@@ -98,6 +98,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag(Enemy_Tag))
         {
             AudioManager.Instance.PlaySound("Death");
+            gameObject.transform.position = new Vector3(0, -2.8f, 0);
             gameObject.SetActive(false);
             OnPlayerHit?.Invoke();
         }
